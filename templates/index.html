@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Texto IA - Herramientas Avanzadas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Principal -->
+        <header class="main-header">
+            <div class="header-content">
+                <h1><i class="fas fa-robot"></i> Analizador de Texto IA</h1>
+                <p class="subtitle">5 herramientas avanzadas para análisis y mejora de textos</p>
+            </div>
+        </header>
+
+        <!-- Navegación entre herramientas -->
+        <nav class="tools-navigation">
+            <button class="nav-btn active" data-target="parafraseo">
+                <i class="fas fa-sync-alt"></i> Parafraseo
+            </button>
+            <button class="nav-btn" data-target="correccion">
+                <i class="fas fa-spell-check"></i> Corrección
+            </button>
+            <button class="nav-btn" data-target="asistente">
+                <i class="fas fa-lightbulb"></i> Asistente
+            </button>
+            <button class="nav-btn" data-target="detector">
+                <i class="fas fa-search"></i> Detector IA
+            </button>
+            <button class="nav-btn" data-target="analisis">
+                <i class="fas fa-chart-bar"></i> Análisis
+            </button>
+        </nav>
+
+        <!-- Secciones Separadas -->
+        <main class="main-content">
+            
+            <!-- SECCIÓN 1: ASISTENTE DE PARAFRASEO IA -->
+            <section class="tool-section active" id="parafraseo">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="section-title">
+                        <h2>Asistente de Parafraseo IA</h2>
+                        <p>Reescribe tu texto manteniendo el significado pero con diferentes palabras y estilos</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label for="paraphrase-input"><i class="fas fa-font"></i> Texto a parafrasear:</label>
+                        <textarea id="paraphrase-input" placeholder="Escribe o pega el texto que quieres parafrasear..." rows="5"></textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="paraphrase-style"><i class="fas fa-palette"></i> Estilo de parafraseo:</label>
+                        <select id="paraphrase-style">
+                            <option value="academic">Académico</option>
+                            <option value="formal">Formal</option>
+                            <option value="simplified">Simplificado</option>
+                        </select>
+                    </div>
+
+                    <button class="btn primary-btn" onclick="paraphraseText()">
+                        <i class="fas fa-magic"></i> Parafrasear Texto
+                    </button>
+
+                    <div class="result-container" id="resultado-parafraseo">
+                        <div class="result-placeholder">
+                            <i class="fas fa-sync-alt"></i>
+                            <p>El texto parafraseado aparecerá aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: CORRECCIÓN ORTOGRÁFICA -->
+            <section class="tool-section" id="correccion">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-spell-check"></i>
+                    </div>
+                    <div class="section-title">
+                        <h2>Corrección Ortográfica</h2>
+                        <p>Detecta y corrige errores ortográficos y gramaticales en tu texto</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label for="spell-check-input"><i class="fas fa-font"></i> Texto a corregir:</label>
+                        <textarea id="spell-check-input" placeholder="Escribe o pega el texto que quieres corregir..." rows="5"></textarea>
+                    </div>
+
+                    <button class="btn primary-btn" onclick="corregirOrtografia()">
+                        <i class="fas fa-check-circle"></i> Corregir Texto
+                    </button>
+
+                    <div class="result-container" id="resultado-correccion">
+                        <div class="result-placeholder">
+                            <i class="fas fa-spell-check"></i>
+                            <p>Los errores y correcciones aparecerán aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: ASISTENTE RÁPIDO -->
+            <section class="tool-section" id="asistente">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="section-title">
+                        <h2>Asistente Rápido</h2>
+                        <p>Obtén sugerencias inteligentes para mejorar tu escritura en tiempo real</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label for="quick-assistant-input"><i class="fas fa-font"></i> Texto para analizar:</label>
+                        <textarea id="quick-assistant-input" placeholder="Escribe o pega el texto para recibir sugerencias..." rows="5"></textarea>
+                    </div>
+
+                    <button class="btn primary-btn" onclick="asistenteRapido()">
+                        <i class="fas fa-bolt"></i> Obtener Sugerencias
+                    </button>
+
+                    <div class="result-container" id="resultado-asistente">
+                        <div class="result-placeholder">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Las sugerencias de mejora aparecerán aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: DETECTOR DE IA -->
+            <section class="tool-section" id="detector">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="section-title">
+                        <h2>Detector de IA</h2>
+                        <p>Analiza la probabilidad de que el texto haya sido generado por inteligencia artificial</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label for="ai-detector-input"><i class="fas fa-font"></i> Texto a analizar:</label>
+                        <textarea id="ai-detector-input" placeholder="Escribe o pega el texto para detectar si fue generado por IA..." rows="5"></textarea>
+                    </div>
+
+                    <button class="btn primary-btn" onclick="detectarIA()">
+                        <i class="fas fa-brain"></i> Detectar IA
+                    </button>
+
+                    <div class="result-container" id="resultado-detector">
+                        <div class="result-placeholder">
+                            <i class="fas fa-search"></i>
+                            <p>El análisis de detección de IA aparecerá aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: ANÁLISIS DETALLADO POR PÁRRAFO -->
+            <section class="tool-section" id="analisis">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="section-title">
+                        <h2>Análisis Detallado por Párrafo</h2>
+                        <p>Obtén métricas detalladas de originalidad y riesgo para cada párrafo de tu texto</p>
+                    </div>
+                </div>
+
+                <div class="tool-content">
+                    <div class="input-group">
+                        <label for="analysis-input"><i class="fas fa-font"></i> Texto a analizar:</label>
+                        <textarea id="analysis-input" placeholder="Escribe o pega el texto completo para análisis por párrafos..." rows="6"></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reference-texts"><i class="fas fa-file-alt"></i> Textos de referencia (opcional):</label>
+                        <textarea id="reference-texts" placeholder="Separa cada texto de referencia con '---'..." rows="3"></textarea>
+                    </div>
+
+                    <button class="btn primary-btn" onclick="analizarParrafos()">
+                        <i class="fas fa-chart-pie"></i> Analizar Párrafos
+                    </button>
+
+                    <div class="result-container" id="resultados-analisis">
+                        <div class="result-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                            <p>El análisis detallado por párrafos aparecerá aquí</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Notificaciones -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
